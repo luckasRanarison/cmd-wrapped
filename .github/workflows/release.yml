@@ -17,19 +17,19 @@ jobs:
       matrix:
         job:
           - {
-              target: x86_64-unknown-linux,
+              target: x86_64-unknown-linux-musl,
               exe: amd64-linux,
               os: ubuntu-latest,
               features: default,
             }
           - {
-              target: aarch64-unknown-linux,
+              target: aarch64-unknown-linux-musl,
               exe: aarch64-linux,
               os: ubuntu-latest,
               features: default,
             }
           - {
-              target: armv7-unknown-linux,
+              target: armv7-unknown-linux-musl,
               exe: armv7-linux,
               os: ubuntu-latest,
               features: default,
@@ -69,7 +69,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: build
-          path: patch-json-${{ matrix.job.exe }}
+          path: cmd-wrapped-${{ matrix.job.exe }}
 
   #cargo-publish:
   #  runs-on: ubuntu-20.04
